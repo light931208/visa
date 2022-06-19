@@ -12,6 +12,7 @@ class Login extends BaseController
 {
     public function index()
     {
+       
         return View::fetch();
     }
 
@@ -27,7 +28,7 @@ class Login extends BaseController
     public function loginOut()
     {
         unset($_SESSION['admin_d']);
-        uset($_SESSION['admin_name']);
+        unset($_SESSION['admin_name']);
     }
 
 

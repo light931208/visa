@@ -16,6 +16,7 @@ class LoginModule
         }   
         $AdminModel->where('username','=',$params['username'])->update(['logintime'=>time()]);
         Session::set('admin_id', 1);
+        Session::set('admin_name',$adminInfo['username']);
         return ['code' => 0 , 'msg' => '登入成功'];
     }
 }
