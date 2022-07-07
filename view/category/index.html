@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菜单 - 签证后台</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="/static/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css?v=4.1.0" rel="stylesheet">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>菜单</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <a class="btn btn-sm btn-primary pull-right m-t-n-xs J_menuItem"  href="/category/add" ><strong>添加</strong></a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>栏目名称</th>
+                                <th>前台展示</th>
+                                <th>创建时间</th>
+                                <th>更新时间</th>
+                                <th>排序</th>
+                                <th>Seo标题</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name='list' id='item'}
+                            <tr>
+                                <td>
+                                    {$item['id']}
+                                </td>
+                                <td>{$item['name']}</td>
+                                <td>
+                                    {if $item['is_show'] == 1}
+                                    开启
+                                    {else/}
+                                    关闭
+                                    {/if}
+                                </td>
+                                <td>{$item['create_time']}</td>
+                                <td>{$item['update_time']}</td>
+                                <td>
+                                    {$item['sort']}
+                                </td>
+                                <td>{$item['seo_title']}</td>
+                                <td>
+                                    <!--<a href="table_basic.html#"><i class="fa fa-check text-navy"></i></a>-->
+                                    <a class="J_menuItem" href="/category/edit?id={$item['id']}" ><i class="fa fa-wrench"></i></a>
+                                    <a class="J_menuItem" href="/category/del?id={$item['id']}" ><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- 全局js -->
+<script src="/static/js/jquery.min.js?v=2.1.4"></script>
+<script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+<!-- Peity -->
+<script src="/static/js/plugins/peity/jquery.peity.min.js"></script>
+<!-- 自定义js -->
+<script src="/static/js/content.js?v=1.0.0"></script>
+<!-- iCheck -->
+<script src="/static/js/plugins/iCheck/icheck.min.js"></script>
+<!-- Peity -->
+<script src="/static/js/demo/peity-demo.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>
+</body>
+</html>

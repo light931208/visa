@@ -12,23 +12,21 @@ class Login extends BaseController
 {
     public function index()
     {
-       
+    	if (Request::isPost())
+		{
+			$params      = Request::param();
+			$loginModule = new \app\module\LoginModule();
+			$loginModule->doLogin($params);
+			return redirect('/admin/index');
+		}
         return View::fetch();
-    }
-
-    public function doLogin()
-    {
-      
-        $params      = Request::param();
-        $loginModule = new \app\module\LoginModule();
-        $res         = $loginModule->doLogin($params);
-        return $res;
     }
 
     public function loginOut()
     {
-        unset($_SESSION['admin_d']);
-        unset($_SESSION['admin_name']);
+    	Session::delete('admin_id');
+		Session::delete('admin_name');
+		header("location:/Login");
     }
 
 

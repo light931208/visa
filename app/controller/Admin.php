@@ -10,17 +10,22 @@ class Admin extends Common
         return View::fetch();
     }
 
-    public function setPwd()
+    public function setpwd()
     {
-       
-        return View::fetch();
+       if (Request::isPost())
+	   {
+		   $params      = Request::param();
+		   $AdminModule = new \app\module\AdminModule();
+		   $AdminModule->setPwd($params);
+		   return redirect('/admin/setpwd');
+	   }
+       return View::fetch();
     }
 
-    public function doSetPwd()
-    {
-        $params      = Request::param();
-        $AdminModule = new \app\module\AdminModule();
-        $res         = $AdminModule->setPwd($params); 
-        return $res;
-    }
+
+    public function welcome()
+	{
+		return View::fetch();
+	}
+
 }

@@ -12,11 +12,11 @@ class LoginModule
         $adminInfo    = $AdminModel->where($condition)->find();
         if(empty($adminInfo)  || md5($params['password']) != $adminInfo['password'])
         {
-            return ['code' => 1 , 'msg' => '账号密码错误'];
-        }   
+			exception('账号密码错误');
+        }
         $AdminModel->where('username','=',$params['username'])->update(['logintime'=>time()]);
         Session::set('admin_id', 1);
         Session::set('admin_name',$adminInfo['username']);
-        return ['code' => 0 , 'msg' => '登入成功'];
+        return returnRes(1,'登入成功');
     }
 }
